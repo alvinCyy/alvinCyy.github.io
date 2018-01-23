@@ -211,9 +211,99 @@
             </nav>
         </header>                
     </div>
-    <link class="menu-list" tags="Tags" friends="Friends" about="About Me"/>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-win32下zxing的使用-1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/01/23/win32下zxing的使用-1/" class="article-date">
+      <time datetime="2018-01-23T06:52:22.000Z" itemprop="datePublished">2018-01-23</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/23/win32下zxing的使用-1/">在vs2017环境下编译zxing-cpp</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="在Win32中使用Zxing-cpp"><a href="#在Win32中使用Zxing-cpp" class="headerlink" title="在Win32中使用Zxing-cpp"></a>在Win32中使用Zxing-cpp</h1><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><pre><code>最近接手一个项目需要识别通过监控摄像机识别二维码，本客户端已经做好RtspClient收流和H.264和H.265解码。这就只需要通过在播放器解码后获取到YUV数据解析得到二维码数据。
+</code></pre><h3 id="环境与工具"><a href="#环境与工具" class="headerlink" title="环境与工具"></a>环境与工具</h3><blockquote>
+<ul>
+<li>window10</li>
+<li>visual studio 2017</li>
+<li>OpenCv 3.4.0</li>
+<li>cmake gui</li>
+</ul>
+</blockquote>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="Zxing-cpp的编译"><a href="#Zxing-cpp的编译" class="headerlink" title="Zxing-cpp的编译"></a>Zxing-cpp的编译</h3><blockquote>
+<p>我们将使用visual studio 2017 配合OpenCv 3.4.0来编译Zxing-cpp</p>
+<p>下载地址:</p>
+<ul>
+<li><a href="https://github.com/glassechidna/zxing-cpp" target="_blank" rel="noopener">Zxing-cpp</a></li>
+<li><a href="https://cmake.org/download/" target="_blank" rel="noopener">cmake gui</a></li>
+<li><a href="http://opencv.org/releases.html" target="_blank" rel="noopener">opencv</a></li>
+</ul>
+<p>准备工作<br></p>
+<ul>
+<li>下载好Zxing-cpp源码解压到常用工作的目录<br><br>文件结构如下<br><br>zxing-cpp<br><br>|–cli<br><br>|–cmake<br><br>|–core<br><br>|–opencv<br><br>|–opencv-cli<br></li>
+<li>安装并配置CMake<br><br>打开 CMake GUI 工具<br><br>设置 source 目录为:/Zxing-cpp，build 目录为: D:/zxing-cpp-master/build.<br><br>打开 Configure 窗口, 选择 Visula studio 15 2017, 单击 Finish 完成设置.<br><br>单击 Generate 按钮, 生成 VS2017 工程.<br><br>在build目录下就可以找到生成的vs项目。最后用vs2017打开项目编译即可。</li>
+</ul>
+<p>在Win32中使用Zxing-cpp系列</p>
+<ul>
+<li><a href="https://alvincyy.github.io/2018/01/23/win32下zxing的使用/">Zxing-cpp的编译</a></li>
+</ul>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/编码人生/">编码人生</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OpenCV-CMake-VS2017-Zxing-QR/">OpenCV CMake VS2017 Zxing QR</a></li></ul>
+    </div>
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-海思H-265解码库破解" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -244,7 +334,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <h1 id="海思H-265解码库破解（去除海思LOGO）"><a href="#海思H-265解码库破解（去除海思LOGO）" class="headerlink" title="海思H.265解码库破解（去除海思LOGO）"></a>海思H.265解码库破解（去除海思LOGO）</h1><p><excerpt in="" index="" |="" 首页摘要=""><br>
+              <p><excerpt in="" index="" |="" 首页摘要=""><br>
           
       
     </div>
@@ -357,14 +447,14 @@
                 2018 yiyu.Chen
             </div>
             <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="A fast, simple &amp; powerful blog framework">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="Another simple and elegant theme for Hexo  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
         
             <div class="visit">
                 
                     <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="Site Visitors"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
                         </span>
                     </span>
                 
@@ -373,7 +463,7 @@
                 
                 
                     <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="Page Hits"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
                         </span>
                     </span>
                 
@@ -390,9 +480,9 @@
 
 
 <div class="scroll" id="scroll">
-    <a href="#" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="Comments"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="Go to Bottom"><i class="fa fa-arrow-down"></i></a>
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
 </div>
 <script>
     // Open in New Window
