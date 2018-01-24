@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Alvin" />
+
+
+
+<meta name="keywords" content="Live555,Visual Studio">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于live555的RtspClient">
+<meta property="og:url" content="https://alvincyy.github.io/2018/01/24/基于live555的RtspClient/index.html">
+<meta property="og:site_name" content="Alvin&#39;s Site">
+<meta property="og:updated_time" content="2018-01-24T11:03:26.076Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于live555的RtspClient">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Alvin&#39;s Site" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>基于live555的RtspClient | Alvin&#39;s Site</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: "true",
+        animate: "true",
+        isHome: "false",
+        isPost: "true",
+        isArchive: "false",
+        isTag: "false",
+        isCategory: "false",
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: ""
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col" style="background-image: url('/background/bg-1.jpg')">
+		<div class="left-bk">
+			<div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Alvin</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">雖千萬里，吾往矣</p>
+        
+
+        
+
+
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:chenyiyu@gmail.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" href="http://weibo.com/chenyiyu1989" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/alvinCyy" title="GitHub"></a>
+                            
+                                <a class="fa 博客园" href="http://www.cnblogs.com/tood/" title="博客园"></a>
+                            
+                                <a class="fa CSDN" href="http://blog.csdn.net/meeku" title="CSDN"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于音视频领域</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+		</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Alvin</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Alvin</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">雖千萬里，吾往矣</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:chenyiyu@gmail.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/chenyiyu1989" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/alvinCyy" title="GitHub"></a>
+                            
+                                <a class="fa 博客园" target="_blank" href="http://www.cnblogs.com/tood/" title="博客园"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="http://blog.csdn.net/meeku" title="CSDN"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-基于live555的RtspClient" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/01/24/基于live555的RtspClient/" class="article-date">
+      <time datetime="2018-01-24T10:29:20.000Z" itemprop="datePublished">2018-01-24</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      基于live555的RtspClient
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/术业专攻/">术业专攻</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Live555/">Live555</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Visual-Studio/">Visual Studio</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><excerpt in="" index="" |="" 首页摘要=""><br><a id="more"></a></excerpt></p>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+<h1 id="基于live555的RtspClient"><a href="#基于live555的RtspClient" class="headerlink" title="基于live555的RtspClient"></a>基于live555的RtspClient</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><pre><code>很早之前做的一个监控客户端使用的一个庞大的SDK，现在把RtspClient这端独立出来。后面可能还会写一些列关于音视频相关的Blog，包括视频解码、视频显示、在YUV数据中叠加图片等等。
+</code></pre><h3 id="音视频系列"><a href="#音视频系列" class="headerlink" title="音视频系列"></a>音视频系列</h3><blockquote>
+<ul>
+<li><a href="">基于live555的RtspClient</a></li>
+</ul>
+</blockquote>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h3><blockquote>
+<ul>
+<li>Visual Studio 2013</li>
+<li>Windows 10</li>
+</ul>
+</blockquote>
+<h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><blockquote>
+<ul>
+<li>Live555源码</li>
+</ul>
+</blockquote>
+<h3 id="开发过程"><a href="#开发过程" class="headerlink" title="开发过程"></a>开发过程</h3><h4 id="一、编译Live555库"><a href="#一、编译Live555库" class="headerlink" title="一、编译Live555库"></a>一、编译Live555库</h4><p>使用vs2013编译live555库网上应该有一大把资料。<br>参考这个<a href="http://blog.csdn.net/bluecheney1990/article/details/42086585" target="_blank" rel="noopener">Live555编译</a>,<br>使用方法二，编译出来4个静态库：</p>
+<blockquote>
+<ul>
+<li>BasicUsageEnvironmentlib.lib</li>
+<li>groupsocklib.lib</li>
+<li>liveMedialib.lib</li>
+<li>UsageEnvironmentlib.lib</li>
+</ul>
+</blockquote>
+<h4 id="二、开发RtspClient项目"><a href="#二、开发RtspClient项目" class="headerlink" title="二、开发RtspClient项目"></a>二、开发RtspClient项目</h4><p>在编译好了live555的库后，用vs创建项目引入静态库，这里就不详细的介绍了，主要来讲讲RtspClient的代码。<br>live555的源码里面，testProgs\testRTSPClient.cpp 和 testProgs\openRTSP.cpp 详细的介绍了具体流程。<br>那我们慢慢根据代码来慢慢探索live555 RtspClient 整个连接过程。</p>
+<blockquote>
+<p>创建RTSPClient对象。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">m_pScheduler = BasicTaskScheduler::createNew();</span><br><span class="line">m_pEnv = BasicUsageEnvironment::createNew(*m_pScheduler);</span><br><span class="line">m_pRtspClient = RTSPClientEx::createNew(*m_pEnv, m_szUrl.c_str(), <span class="number">0</span>, <span class="string">"RTSP Client"</span>);</span><br></pre></td></tr></table></figure>
+<p>首先是创建TaskScheduler对象和UsageEnvironment对象,然后根据RTSP地址m_szUrl 创建一个RTSPClient对象，一个RTSPClient对象代表一个RTSP客户端。</p>
+<blockquote>
+<p>发送DESCRIBE命令</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Authenticator auth;</span><br><span class="line">auth.setUsernameAndPassword(m_szAccount.c_str(), m_szPassword.c_str());</span><br><span class="line">m_pRtspClient-&gt;sendDescribeCommand(continueAfterDESCRIBE, &amp;auth);</span><br><span class="line"><span class="keyword">if</span> (!wait_Live555_response(wait_live555_time))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">continue</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用sendDescribeCommand函数发送DESCRIBE命令，回调函数是continueAfterDESCRIBE函数，在收到RTSP服务器端对DESCRIBE命令的回复时调用。大家看到这里可能发现下面的wait_Live555_response怎么和testRTSPClient.cpp里面的不同了，这里我是参考了vlc代码里面的实现。这在里调用wait_Live555_response堵塞线程等待continueAfterDESCRIBE返回结果才执行下一步。wait_Live555_response这个函数会在接下来的代码中发挥同样的作用 wait_live555_time 是超时时间。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">TaskInterruptRTSP</span><span class="params">(<span class="keyword">void</span> *p_private)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	CRtspPullClass *pPullClass = (CRtspPullClass*)p_private;</span><br><span class="line">	pPullClass-&gt;m_event_rtsp = <span class="number">0xff</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> CRtspPullClass::wait_Live555_response(<span class="keyword">int</span> i_timeout)</span><br><span class="line">&#123;</span><br><span class="line">	TaskToken task;</span><br><span class="line">	m_event_rtsp = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span> (i_timeout &gt; <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		task = m_pScheduler-&gt;scheduleDelayedTask(i_timeout * <span class="number">1000</span>,</span><br><span class="line">			TaskInterruptRTSP,</span><br><span class="line">			<span class="keyword">this</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	m_event_rtsp = <span class="number">0</span>;</span><br><span class="line">	m_b_error = <span class="literal">true</span>;</span><br><span class="line">	m_ilive555_ret = <span class="number">0</span>;</span><br><span class="line">	m_pScheduler-&gt;doEventLoop(&amp;m_event_rtsp);</span><br><span class="line">	<span class="keyword">if</span> (i_timeout &gt; <span class="number">0</span>)</span><br><span class="line">		m_pScheduler-&gt;unscheduleDelayedTask(task);</span><br><span class="line">	<span class="keyword">return</span> !m_b_error;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面是wait_Live555_response()的具体实现,先通过scheduleDelayedTask设置一个超时回调，然后doEventLoop堵塞Live555的线程，这里m_event_rtsp = 0的时候调用doEventLoop就是堵塞，如果当m_event_rtsp = 1的时候这里就继续往下执行。</p>
+<p>然后让我们来看看continueAfterDESCRIBE()回调里的实现</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">continueAfterDESCRIBE</span><span class="params">(RTSPClient* rtspClient, <span class="keyword">int</span> resultCode, <span class="keyword">char</span>* resultString)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	CRtspPullClass* pPullClass = ((RTSPClientEx*)rtspClient)-&gt;GetPullClass();</span><br><span class="line">	UsageEnvironment&amp; env = rtspClient-&gt;envir();</span><br><span class="line">	pPullClass-&gt;m_ilive555_ret = resultCode;</span><br><span class="line">	<span class="keyword">if</span> (resultCode == <span class="number">0</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">char</span>* sdpDescription = resultString;</span><br><span class="line">		<span class="built_in">free</span>(pPullClass-&gt;m_p_sdp);</span><br><span class="line">		pPullClass-&gt;m_p_sdp = <span class="literal">NULL</span>;</span><br><span class="line">		<span class="keyword">if</span> (sdpDescription)</span><br><span class="line">		&#123;</span><br><span class="line">			pPullClass-&gt;m_p_sdp = strdup(sdpDescription);</span><br><span class="line">			pPullClass-&gt;m_b_error = <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">			pPullClass-&gt;m_b_error = <span class="literal">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		pPullClass-&gt;m_b_error = <span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">delete</span>[] resultString;</span><br><span class="line">	pPullClass-&gt;m_event_rtsp = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果回调返回成功的话就会获取到sdp信息。然后我们就会更具sdp信息创建一个MediaSession对象，MediaSession表示客户端请求服务器端某个媒体资源的会话。MediaSubsession，表示MediaSession的子会话，创建MediaSession的同时也创建了包含的MediaSubsession对象。然后客户端对服务器端的每个ServerMediaSubsession发送SETUP命令请求建立连接。让我们看接下来创建MediaSession的代码<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">VIDEO_PARAM</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">char</span> codec[<span class="number">256</span>];</span><br><span class="line">	<span class="keyword">int</span> width;</span><br><span class="line">	<span class="keyword">int</span> height;</span><br><span class="line">	<span class="keyword">int</span> colorbits;</span><br><span class="line">	<span class="keyword">int</span> framerate;</span><br><span class="line">	<span class="keyword">int</span> bitrate;</span><br><span class="line">	<span class="keyword">char</span> vol_data[<span class="number">256</span>];</span><br><span class="line">	<span class="keyword">int</span> vol_length;</span><br><span class="line">&#125;VIDEO_PARAM;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>  _<span class="title">AUDIO_PARAM</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">char</span> codec[<span class="number">256</span>];</span><br><span class="line">	<span class="keyword">int</span> samplerate;</span><br><span class="line">	<span class="keyword">int</span> bitspersample;</span><br><span class="line">	<span class="keyword">int</span> channels;</span><br><span class="line">	<span class="keyword">int</span> framerate;</span><br><span class="line">	<span class="keyword">int</span> bitrate;</span><br><span class="line">&#125;AUDIO_PARAM;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span>  __<span class="title">STREAM_AV_PARAM</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">	<span class="keyword">unsigned</span> <span class="keyword">char</span>	ProtocolName[<span class="number">32</span>];</span><br><span class="line">	<span class="keyword">short</span>  bHaveVideo;<span class="comment">//0 表示没有视频参数</span></span><br><span class="line">	<span class="keyword">short</span>  bHaveAudio;<span class="comment">//0 表示没有音频参数</span></span><br><span class="line">	VIDEO_PARAM videoParam;<span class="comment">//视频参数</span></span><br><span class="line">	AUDIO_PARAM audioParam;<span class="comment">//音频参数</span></span><br><span class="line">	<span class="keyword">char</span>		szUrlInfo[<span class="number">512</span>];<span class="comment">//注意长度</span></span><br><span class="line">&#125;STREAM_AV_PARAM;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (!(m_pSession = MediaSession::createNew(*m_pEnv, m_p_sdp)))</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">continue</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (m_pSession-&gt;hasSubsessions() ==<span class="literal">false</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">continue</span>;</span><br><span class="line">&#125;</span><br><span class="line">m_dwLastRecvDataTick = GetTickCount();</span><br><span class="line">STREAM_AV_PARAM * pAvParam = &amp;m_avParam;</span><br><span class="line"><span class="built_in">memset</span>(pAvParam, <span class="number">0</span>, <span class="keyword">sizeof</span>(STREAM_AV_PARAM));</span><br><span class="line"><span class="built_in">memset</span>(&amp;m_AudioParam, <span class="number">0</span>, <span class="keyword">sizeof</span>(AUDIO_PARAM));</span><br><span class="line"><span class="built_in">memset</span>(&amp;m_VideoParam, <span class="number">0</span>, <span class="keyword">sizeof</span>(VIDEO_PARAM));</span><br><span class="line"><span class="built_in">sprintf</span>((<span class="keyword">char</span> *)pAvParam-&gt;ProtocolName, <span class="string">"%s"</span>, <span class="string">"AjVisionHD"</span>);</span><br><span class="line">MediaSubsession* subsession = <span class="literal">NULL</span>;</span><br><span class="line"><span class="function">MediaSubsessionIterator <span class="title">iter</span><span class="params">(*m_pSession)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>STREAM_AV_PARAM 是一个包含媒体流参数的结构体，因为在解码的时候需要知道音视频的类型是H.265 还是H.264 是AAC还是G.711。音频的采样率、码率、通道数。视频的长宽、码率、和帧率。<br>取得MediaSubsession，然后客户端对服务器端的每个MediaSubsessionn发送SETUP命令请求建立连接。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> ((subsession = iter.next()) != <span class="literal">NULL</span>)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (subsession-&gt;initiate() == <span class="literal">false</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">continue</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (subsession-&gt;rtpSource() != <span class="literal">NULL</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		desiredPortNum = subsession-&gt;clientPortNum();</span><br><span class="line">		<span class="keyword">if</span> (desiredPortNum != <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			subsession-&gt;setClientPortNum(desiredPortNum);</span><br><span class="line">			desiredPortNum += <span class="number">2</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		subsession-&gt;rtpSource()-&gt;setPacketReorderingThresholdTime(<span class="number">200000</span>);</span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">strcmp</span>(subsession-&gt;mediumName(), <span class="string">"video"</span>) == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">int</span> nIsH264 = <span class="number">-1</span>;</span><br><span class="line">			<span class="keyword">if</span> ((<span class="built_in">strcmp</span>(subsession-&gt;codecName(), <span class="string">"h264"</span>) == <span class="number">0</span>)</span><br><span class="line">				|| (<span class="built_in">strcmp</span>(subsession-&gt;codecName(), <span class="string">"H264"</span>) == <span class="number">0</span>))</span><br><span class="line">				nIsH264 = <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">else</span> <span class="keyword">if</span> ((<span class="built_in">strcmp</span>(subsession-&gt;codecName(), <span class="string">"h265"</span>) == <span class="number">0</span>)</span><br><span class="line">				|| (<span class="built_in">strcmp</span>(subsession-&gt;codecName(), <span class="string">"H265"</span>) == <span class="number">0</span>))</span><br><span class="line">				nIsH264 = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span> (nIsH264 == <span class="number">-1</span>)</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			VIDEO_PARAM *pVideoParam = &amp;m_VideoParam;</span><br><span class="line">			<span class="built_in">memset</span>(pVideoParam, <span class="number">0</span>, <span class="keyword">sizeof</span>(VIDEO_PARAM));</span><br><span class="line">			<span class="built_in">strcpy</span>(pVideoParam-&gt;codec, subsession-&gt;codecName());</span><br><span class="line">			pVideoParam-&gt;width = subsession-&gt;videoWidth();</span><br><span class="line">			pVideoParam-&gt;height = subsession-&gt;videoHeight();</span><br><span class="line">			pVideoParam-&gt;framerate = subsession-&gt;videoFPS();</span><br><span class="line">			pVideoParam-&gt;bitrate = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span> (subsession-&gt;fmtp_config() != <span class="literal">NULL</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">unsigned</span> configLen;</span><br><span class="line">				<span class="keyword">unsigned</span> <span class="keyword">char</span>* configData = parseGeneralConfigStr(subsession-&gt;fmtp_config(), configLen);</span><br><span class="line">				<span class="keyword">if</span> (configData != <span class="literal">NULL</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="built_in">memcpy</span>(pVideoParam-&gt;vol_data, configData, configLen);</span><br><span class="line">					pVideoParam-&gt;vol_length = configLen;</span><br><span class="line">					<span class="keyword">delete</span>[] configData; configData = <span class="literal">NULL</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			pAvParam-&gt;bHaveVideo = <span class="number">1</span>;</span><br><span class="line">			<span class="built_in">memcpy</span>(&amp;pAvParam-&gt;videoParam, pVideoParam, <span class="keyword">sizeof</span>(VIDEO_PARAM));</span><br><span class="line">			<span class="keyword">if</span> (m_pVideoSink)</span><br><span class="line">			&#123;</span><br><span class="line">				CVideoStreamSink::close(m_pVideoSink);</span><br><span class="line">				m_pVideoSink = <span class="literal">NULL</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">try</span></span><br><span class="line">			&#123;</span><br><span class="line">				m_pVideoSink = <span class="keyword">new</span> CVideoStreamSink(*m_pEnv, nIsH264, <span class="keyword">this</span>, (LONG)<span class="keyword">this</span>, <span class="number">4</span> * <span class="number">1024</span> * <span class="number">1024</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">catch</span> (...)</span><br><span class="line">			&#123;</span><br><span class="line">				m_pVideoSink = <span class="literal">NULL</span>;</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (m_pVideoSink)</span><br><span class="line">			&#123;</span><br><span class="line">				m_pVideoSink-&gt;SetStreamName(<span class="string">""</span>);</span><br><span class="line">				<span class="keyword">if</span> ( m_nLinkMode== <span class="number">2</span>)</span><br><span class="line">					m_pRtspClient-&gt;sendSetupCommand(*subsession, default_live555_callback, <span class="literal">false</span>, <span class="literal">false</span>, <span class="literal">true</span>);</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					m_pRtspClient-&gt;sendSetupCommand(*subsession, default_live555_callback, <span class="literal">false</span>, m_nLinkMode, <span class="literal">false</span>);</span><br><span class="line">				m_dwLastRecvDataTick = GetTickCount();</span><br><span class="line">				<span class="keyword">if</span> (!IsRunning())</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">if</span> (!wait_Live555_response(wait_live555_time))</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">continue</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				m_dwLastRecvDataTick = GetTickCount();</span><br><span class="line">				<span class="keyword">if</span> (m_nLinkMode == <span class="number">2</span>)</span><br><span class="line">				&#123;<span class="comment">//组播</span></span><br><span class="line">					subsession-&gt;setDestinations(subsession-&gt;connectionEndpointAddress());</span><br><span class="line">				&#125;</span><br><span class="line">				subsession-&gt;miscPtr = m_pRtspClient;</span><br><span class="line">				m_pVideoSink-&gt;startPlaying(*(subsession-&gt;readSource()), subsessionAfterPlaying, subsession);</span><br><span class="line">				<span class="keyword">if</span> (subsession-&gt;rtcpInstance() != <span class="literal">NULL</span>)</span><br><span class="line">			    	subsession-&gt;rtcpInstance()-&gt;setByeHandler(subsessionByeHandler, subsession);</span><br><span class="line">				subsession-&gt;sink = m_pVideoSink;</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">strcmp</span>(subsession-&gt;mediumName(), <span class="string">"audio"</span>) == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			AUDIO_PARAM *pAudioParam = &amp;m_AudioParam;</span><br><span class="line">			<span class="built_in">memset</span>(pAudioParam, <span class="number">0</span>, <span class="keyword">sizeof</span>(AUDIO_PARAM));</span><br><span class="line">			<span class="built_in">strcpy</span>(pAudioParam-&gt;codec, subsession-&gt;codecName());</span><br><span class="line">			DebugLog(<span class="string">"CRtspPullClass::RtspLinkThread() %s recv audio type = %s"</span>, m_szUrl.c_str(), subsession-&gt;codecName());</span><br><span class="line">			<span class="keyword">if</span> (<span class="built_in">strstr</span>(pAudioParam-&gt;codec, <span class="string">"PCMU"</span>) || <span class="built_in">strstr</span>(pAudioParam-&gt;codec, <span class="string">"PCMA"</span>)) <span class="comment">// for G711</span></span><br><span class="line">			&#123;</span><br><span class="line">				pAudioParam-&gt;bitrate = <span class="number">64000</span>;</span><br><span class="line">				pAudioParam-&gt;bitspersample = <span class="number">16</span>;</span><br><span class="line">				pAudioParam-&gt;channels = <span class="number">1</span>;<span class="comment">//subsession-&gt;numChannels();</span></span><br><span class="line">				pAudioParam-&gt;framerate = <span class="number">8</span>;</span><br><span class="line">				pAudioParam-&gt;samplerate = subsession-&gt;rtpTimestampFrequency();</span><br><span class="line"></span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> <span class="comment">//for AAC</span></span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">unsigned</span> configLen;</span><br><span class="line">				<span class="keyword">unsigned</span> <span class="keyword">char</span>* configData = parseGeneralConfigStr(subsession-&gt;fmtp_config(), configLen);</span><br><span class="line">				<span class="keyword">if</span> (configData != <span class="literal">NULL</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">unsigned</span> <span class="keyword">char</span> samplingFrequencyIndex = (configData[<span class="number">0</span>] &amp; <span class="number">0x07</span>) &lt;&lt; <span class="number">1</span>;</span><br><span class="line">					samplingFrequencyIndex |= (configData[<span class="number">1</span>] &amp; <span class="number">0x80</span>) &gt;&gt; <span class="number">7</span>;</span><br><span class="line">					<span class="keyword">if</span> (samplingFrequencyIndex &gt; <span class="number">15</span>)</span><br><span class="line">					&#123;</span><br><span class="line">						samplingFrequencyIndex = <span class="number">0</span>;</span><br><span class="line">					&#125;</span><br><span class="line"></span><br><span class="line">					pAudioParam-&gt;bitspersample = <span class="number">16</span>;</span><br><span class="line">					pAudioParam-&gt;samplerate = samplingFrequencyTable[samplingFrequencyIndex];</span><br><span class="line">					pAudioParam-&gt;channels = <span class="number">2</span>;</span><br><span class="line">					pAudioParam-&gt;bitrate = pAudioParam-&gt;samplerate * pAudioParam-&gt;bitspersample / <span class="number">8</span>;</span><br><span class="line">					pAudioParam-&gt;framerate = <span class="number">8</span>;</span><br><span class="line">					<span class="keyword">delete</span>[] configData; configData = <span class="literal">NULL</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">				&#123;</span><br><span class="line">					pAudioParam-&gt;bitrate = <span class="number">16000</span>;</span><br><span class="line">					pAudioParam-&gt;bitspersample = <span class="number">16</span>;</span><br><span class="line">					pAudioParam-&gt;channels = <span class="number">2</span>;</span><br><span class="line">					pAudioParam-&gt;framerate = <span class="number">16</span>;</span><br><span class="line">					pAudioParam-&gt;samplerate = <span class="number">16000</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			pAvParam-&gt;bHaveAudio = <span class="number">1</span>;</span><br><span class="line">			<span class="built_in">memcpy</span>(&amp;pAvParam-&gt;audioParam, pAudioParam, <span class="keyword">sizeof</span>(AUDIO_PARAM));</span><br><span class="line">			<span class="keyword">if</span> (m_pAudioSink)</span><br><span class="line">			&#123;</span><br><span class="line">				CAudioStreamSink::close(m_pAudioSink);</span><br><span class="line">				m_pAudioSink = <span class="literal">NULL</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">try</span></span><br><span class="line">			&#123;</span><br><span class="line">				m_pAudioSink = <span class="keyword">new</span> CAudioStreamSink(*m_pEnv, <span class="keyword">this</span>, (LONG)<span class="keyword">this</span>, <span class="number">64</span> * <span class="number">1024</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">catch</span> (...)</span><br><span class="line">			&#123;</span><br><span class="line">				CAudioStreamSink::close(m_pAudioSink);</span><br><span class="line">				m_pAudioSink = <span class="literal">NULL</span>;</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (m_pAudioSink)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span> (m_nLinkMode == <span class="number">2</span>)</span><br><span class="line">				&#123;</span><br><span class="line">					m_pRtspClient-&gt;sendSetupCommand(*subsession, default_live555_callback, <span class="literal">false</span>, <span class="literal">false</span>, <span class="literal">true</span>);<span class="comment">//,TRUE);</span></span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					m_pRtspClient-&gt;sendSetupCommand(*subsession, default_live555_callback, <span class="literal">false</span>, m_nLinkMode);<span class="comment">//,TRUE);			</span></span><br><span class="line">				m_dwLastRecvDataTick = GetTickCount();</span><br><span class="line">				<span class="keyword">if</span> (!IsRunning())</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				<span class="keyword">if</span> (!wait_Live555_response(wait_live555_time))</span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">if</span> (m_pAudioSink)</span><br><span class="line">					&#123;</span><br><span class="line">						CAudioStreamSink::close(m_pAudioSink);</span><br><span class="line">						m_pAudioSink = <span class="literal">NULL</span>;</span><br><span class="line">					&#125;</span><br><span class="line">					subsession-&gt;sink = <span class="literal">NULL</span>;</span><br><span class="line">					<span class="keyword">continue</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span> (m_nLinkMode == <span class="number">2</span>)</span><br><span class="line">				&#123;<span class="comment">//组播</span></span><br><span class="line">					subsession-&gt;setDestinations(subsession-&gt;connectionEndpointAddress());</span><br><span class="line">				&#125;</span><br><span class="line">				subsession-&gt;miscPtr = m_pRtspClient;</span><br><span class="line">				m_pAudioSink-&gt;startPlaying(*(subsession-&gt;readSource()), subsessionAfterPlaying, subsession);</span><br><span class="line">				<span class="keyword">if</span> (subsession-&gt;rtcpInstance() != <span class="literal">NULL</span>)</span><br><span class="line">					subsession-&gt;rtcpInstance()-&gt;setByeHandler(subsessionByeHandler, subsession);</span><br><span class="line">				subsession-&gt;sink = m_pAudioSink;</span><br><span class="line">				m_dwLastRecvDataTick = GetTickCount();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (m_pVideoSink || m_pAudioSink)</span><br><span class="line">&#123;</span><br><span class="line">	m_pRtspClient-&gt;sendPlayCommand(*m_pSession, default_live555_callback, <span class="number">0</span>, <span class="number">-1</span>, <span class="number">1</span>);</span><br><span class="line">	<span class="keyword">if</span> (!wait_Live555_response(wait_live555_time))</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">continue</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	m_isStoping = <span class="number">0</span>;</span><br><span class="line">	m_pScheduler-&gt;doEventLoop(&amp;m_isStoping);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在上面的代码中，首先调用MediaSubsession的initiate函数初始化MediaSubsession，然后通过MediaSubsession获取音视频的参数填充结构体。最后为MediaSubsession创建MediaSink对象来请求和保存服务器端发送的数据。然后对MediaSubsession发送SETUP命令。同样调用wait_Live555_response等待回调返回数据，然后调用MediaSink::startPlaying函数开始准备播放对应的MediaSubsession。如果建立连接成功了最后会发送Play命令请求开始传送数据同样等到回复后调用m_pScheduler-&gt;doEventLoop(&amp;m_isStoping)堵塞线程;</p>
+<blockquote>
+<p>下面的代码是MediaSink里面的实现了</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> CMediaSinkSink::afterGettingFrame(<span class="keyword">void</span>* clientData, <span class="keyword">unsigned</span> frameSize,</span><br><span class="line"> <span class="keyword">unsigned</span> <span class="comment">/*numTruncatedBytes*/</span>,</span><br><span class="line"> struct timeval presentationTime,</span><br><span class="line"> <span class="keyword">unsigned</span> <span class="comment">/*durationInMicroseconds*/</span>) </span><br><span class="line">&#123;</span><br><span class="line">	CVideoStreamSink* sink = (CVideoStreamSink*)clientData;	</span><br><span class="line">	fSource-&gt;getNextFrame(fBuffer, fBufferSize,afterGettingFrame, <span class="keyword">this</span>,onSourceClosure, <span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在DummySink::afterGettingFrame函数中只是简单地打印出了某个MediaSubsession接收到了多少字节的数据，然后接着利用FramedSource去读取数据。可以看出，在RTSP客户端，Live555也是在MediaSink和FramedSource之间形成了一个循环，不停地从服务器端读取数据。</p>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><blockquote>
+<ul>
+<li><a href="http://www.videolan.org/vlc/download-sources.html" target="_blank" rel="noopener">VLC</a></li>
+</ul>
+</blockquote>
+<h3 id="最后的话"><a href="#最后的话" class="headerlink" title="最后的话"></a>最后的话</h3><blockquote>
+<ul>
+<li>如果遇到问题可以给我发邮件<a href="mailto:chenyiyu@gmail.com" target="_blank" rel="noopener">chenyiyu@gmail.com</a></li>
+<li>转载请注明原地址，<a href="http://alvinCyy.github.io">Alvin的博客</a> 谢谢！</li>
+</ul>
+</blockquote>
+</the>
+      
+    </div>
+    
+  </div>
+  
+    
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/01/24/在vs项目中使用zxing-cpp/">
+                    在vs项目中使用zxing-cpp
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"基于live555的RtspClient　| Alvin's Site　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/01/24/在vs项目中使用zxing-cpp/" title="下一篇: 在vs项目中使用zxing-cpp">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/01/24/基于live555的RtspClient/">基于live555的RtspClient</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/24/在vs项目中使用zxing-cpp/">在vs项目中使用zxing-cpp</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/23/win32下zxing的使用-1/">在vs环境下编译zxing-cpp</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/23/海思H-265解码库破解/">海思H.265解码库破解</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/22/Welcome-to-my-home/">欢迎来到我的博客</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018 Alvin
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+             tags: ".article-tag a", 
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
