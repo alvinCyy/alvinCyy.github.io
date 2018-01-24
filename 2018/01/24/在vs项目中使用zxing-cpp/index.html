@@ -20,7 +20,7 @@
 <meta property="og:title" content="在vs项目中使用zxing-cpp">
 <meta property="og:url" content="https://alvincyy.github.io/2018/01/24/在vs项目中使用zxing-cpp/index.html">
 <meta property="og:site_name" content="Welcome to My Home">
-<meta property="og:updated_time" content="2018-01-24T05:03:00.743Z">
+<meta property="og:updated_time" content="2018-01-24T05:09:28.488Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在vs项目中使用zxing-cpp">
 
@@ -269,8 +269,8 @@
 </blockquote>
 <h2 id="zxing-cpp系列"><a href="#zxing-cpp系列" class="headerlink" title="zxing-cpp系列"></a>zxing-cpp系列</h2><blockquote>
 <ul>
-<li><a href="https://alvincyy.github.io/2018/01/23/win32下zxing的使用/">Zxing-cpp的编译</a><br></li>
-<li><a href="https://alvincyy.github.io/2018/01/23/在vs项目中使用zxing-cpp/">在vs项目中使用zxing-cpp</a><br></li>
+<li><a href="https://alvincyy.github.io/2018/01/23/win32下zxing的使用-1/">Zxing-cpp的编译</a><br></li>
+<li><a href="https://alvincyy.github.io/2018/01/24/在vs项目中使用zxing-cpp/">在vs项目中使用zxing-cpp</a><br></li>
 </ul>
 </blockquote>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>  通过前面，我们已经获得了lib文件和实例Demo，但是实例Demo是解析图片文件，而项目需求是解析YUV数据，这就需要修改成解析Yuv数据。虽然也可以通过将YUV数据保存成文件后在识别，但是因为在项目的实时传输流情况下不能影响视频的播放和显示，显然不现实，而且YUV数据直接解析二维码效率更高。<br>  因为已经生成了静态库lib库，和头文件(code/src文件夹中)。可以直接导入已经存在的工程，直接开始使用。如果不知道怎么导入lib库请找度娘。<br>  导入后因为原先的工程是VS2005的导致这个2017编译的静态库总是出现接口未定义的错误，最后无奈又重新用vs2005将zxing-cpp编译了一次。再次导入出现了未找到stdint.h头文件的错误，因为stdint.h是c99标准的头文件，vs2005不支持从VS2017的\VC\include文件夹找到复制到vs2005这个目录下面。<br>  再次运行成功。<br>  开始编写支持YUV数据解析的接口。具体的过程就不一一道明了，直接放代码。<br>  参考Demo实例的ImageReaderSource类编写出来CBufferReaderSource类</p>
@@ -330,7 +330,7 @@
         <p><span>本文标题:</span><a href="/2018/01/24/在vs项目中使用zxing-cpp/">在vs项目中使用zxing-cpp</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">yiyu.Chen</a></p>
         <p><span>发布时间:</span>2018-01-24, 12:28:17</p>
-        <p><span>最后更新:</span>2018-01-24, 13:03:00</p>
+        <p><span>最后更新:</span>2018-01-24, 13:09:28</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/01/24/在vs项目中使用zxing-cpp/" title="在vs项目中使用zxing-cpp">https://alvincyy.github.io/2018/01/24/在vs项目中使用zxing-cpp/</a>
             <span class="copy-path" data-clipboard-text="原文: https://alvincyy.github.io/2018/01/24/在vs项目中使用zxing-cpp/　　作者: yiyu.Chen" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
